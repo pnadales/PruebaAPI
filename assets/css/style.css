@@ -1,0 +1,24 @@
+/* Colores
+
+cbff8c
+e3e36a
+c16200
+881600
+4e0110
+5e1826 */
+
+
+body {
+    background-color: #881600;
+}
+
+h3,
+header {
+    text-align: center;
+}
+
+
+
+.btn {
+    background-color: #c16200;
+}
