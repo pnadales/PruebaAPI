@@ -1,4 +1,4 @@
-
+// Función para comprobar que solo se ingresen números y que esté en el rango
 function comprobar(texto) {
 
 
@@ -14,6 +14,7 @@ function comprobar(texto) {
 
 }
 
+// Función donde se agregan los datos al grafico, adicionalmente evalúa si no hay ningún dato que graficar
 function creaGrafico(datos) {
 
     let grafico = {
@@ -52,6 +53,8 @@ function creaGrafico(datos) {
 
 }
 
+
+// Funciones para reemplazar 0 y - por sin datos en la tarjeta
 function reemplazarGion(cadena) {
 
     let nuevaCadena = cadena.replace(/-(?!\s)/g, 'sin datos');
@@ -62,6 +65,11 @@ function reemplazarCero(cadena) {
     var nuevaCadena = cadena.replace(/\b0\b/g, 'sin datos');
     return nuevaCadena;
 }
+
+
+
+
+// Esta función agrega los datos requeridos a la tarjeta
 function datosCard(datosAPI) {
     let listaDatos = ["<p>Conecciones: " + datosAPI.connections['group-affiliation'] + "</p>",
     "<p>Publicado por: " + datosAPI.biography.publisher + "</p>",
@@ -79,16 +87,23 @@ function datosCard(datosAPI) {
 
 
 }
+
+
+
 $(document).ready(function () {
 
-
+    // Guardamos la ubicación del gráfico en una variable
     let ubicacion = $('#grafico');
+
+    // Instrucciones que se realizarán cuando se clickee el botón
     $('#boton').click(function (e) {
         e.preventDefault()
+        // Se captura el valor ingresado por el usuario
         let indiceBusqueda = $('#index').val();
 
+        // Se comprueba que el valor ingresado cumpla con las condicione establecidas
         if (comprobar(indiceBusqueda)[0]) {
-
+            // se hace la conección con la API si todo está en orden
             $.ajax({
                 type: "GET",
                 url: "https://www.superheroapi.com/api.php/4905856019427443/" + indiceBusqueda,
@@ -105,19 +120,19 @@ $(document).ready(function () {
                     $('.card').removeClass('d-none');
                     $('#encontrado').removeClass('d-none');
 
-                    // grafico
+                    // Aquí se evalúa que el id ingresado contenga al menos una PowerStat para graficar
                     if (creaGrafico(datos)[0]) {
 
                         ubicacion.CanvasJSChart(creaGrafico(datos)[1])
                     } else {
+                        //Si no hay datos se muestra el mensaje
                         ubicacion.html('<p>Sin datos para graficar</p>')
                     }
 
 
                 },
                 error: function (error) {
-                    alert("mal")
-                    //si todo sale bien, se agrega la funcionalidad aquí.
+                    alert("Error!")
                 },
             });
         } else {

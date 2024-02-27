@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- nav de Bootstrap -->
     <nav class="navbar bg-dark">
         <div class="container">
             <a class="navbar-brand text-light" href="#">
@@ -21,11 +22,13 @@
             </a>
         </div>
     </nav>
+
+    <!-- Header que contiene la imagen principal -->
     <header class="container pt-5 pb-5">
         <img id="headImg" src="assets/img/sh1.jpg" alt="SuperHero" width="500 rem">
     </header>
 
-
+    <!-- sección con todos los elementos para realizar la búsqueda -->
     <section class="container">
         <h1 class="text-center">Encuenta a tu SuperHero</h1>
         <p class="text-center">Ingresa un número desde 1 hasta 732</p>
@@ -34,7 +37,7 @@
     </section>
 
 
-
+    <!-- Esto solo se mostrará si la búsqueda ha sido correcta -->
     <h3 id="encontrado" class="d-none justify-content-center">¡SuperHero Encontrado!</h3>
 
     <div class="row container d-flex justify-content-center">
@@ -48,14 +51,13 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div id="detalles"></div>
-                        <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
                     </div>
                 </div>
             </div>
         </div>
 
 
-
+        <!-- div para luego insertar el grafico Canvas -->
         <div id="grafico" class="col-md-6">
         </div>
 
